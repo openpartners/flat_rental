@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Ads</h1>
+<h1>Listing Flats</h1>
 
 <table>
   <thead>
     <tr>
+      <th>#</th>
       <th>Title</th>
       <th>Description</th>
       <th>Price</th>
@@ -14,8 +15,9 @@
   </thead>
 
   <tbody>
-    <% @ads.each do |ad| %>
+    <% @ads.each_with_index do |ad, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= ad.title %></td>
         <td><%= ad.description %></td>
         <td><%= ad.price %></td>
