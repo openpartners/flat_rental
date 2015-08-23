@@ -1,38 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Flats</h1>
+<center><h1>Listing Flats</h1></center>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>City</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<% @ads.each do |ad| %>
+<div class="col-md-2">
+  <%= image_tag "http://openpartners.pl/wp-content/uploads/2014/09/kurs_ruby_on_rails_openpartners.jpg", class: "img-responsive" %>
+</div>
 
-  <tbody>
-    <% @ads.each_with_index do |ad, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= ad.title %></td>
-        <td><%= ad.description %></td>
-        <td><%= ad.price %></td>
-        <td><%= ad.address %></td>
-        <td><%= ad.city %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Clone', "ads/#{ad.id}/clone" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-md-10">
+  <div class="col-md-12">
+    <h4><%= link_to ad.title, ad %></h4>
+  </div>
+  <div class="col-md-6">
+    <strong>Address:</strong> <%= ad.address %> , <%= ad.city  %>
+  </div>
+  <div class="col-md-6">
+    <strong>Price:</strong> <%= ad.price %>
+  </div>
+</div>
+<div class="col-md-12"> 
+  <hr>
+</div>
 
-<br>
+<% end %>
 
-<%= link_to 'New Ad', new_ad_path %>

@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @ad.title %>
-</p>
+<div class="col-md-3">
+ <%= image_tag "http://openpartners.pl/wp-content/uploads/2014/09/kurs_ruby_on_rails_openpartners.jpg", class: "img-responsive" %>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ad.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @ad.price %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @ad.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @ad.city %>
-</p>
-
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
-<%= link_to 'Back', ads_path %>
+<div class="col-md-9">
+  <div class="col-md-12"> 
+    <hr>
+    <h4>
+      <%= @ad.title  %>
+    </h4>
+  </div>
+  <div class="col-md-6"> 
+    <strong>Price:</strong>
+    <%= @ad.price %>
+  </div>
+  <div class="col-md-6"> 
+    <strong>Address:</strong>
+    <%= @ad.address %>, <%= @ad.city %>
+  </div>
+  <div class="col-md-12"> 
+    <hr>
+    <strong>Description:</strong>
+    <%= simple_format @ad.description %>
+  </div>
+</div>
