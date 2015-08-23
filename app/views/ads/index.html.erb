@@ -1,26 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<center><h1>Listing Flats</h1></center>
+<p id='notice'><%= notice %></p>
+<% if admin_signed_in? %>
+<%= link_to "New Ad", '/ads/new', class: 'btn btn-success'  %>
+<% end %>
+<center> <h1>280,351 ads in London on the UK's</h1> </center>
+<hr>
 
 <% @ads.each do |ad| %>
 <div class="col-md-2">
-  <%= image_tag "http://openpartners.pl/wp-content/uploads/2014/09/kurs_ruby_on_rails_openpartners.jpg", class: "img-responsive" %>
+  <%#= image_tag ad.image, class: " img-responsive" %>
 </div>
-
 <div class="col-md-10">
   <div class="col-md-12">
+    <% if admin_signed_in? %>
+    <%= link_to "Edit Ad", "/ads/#{ad.id}/edit", class: 'btn btn-info btn-xs'  %>
+    <%= link_to "Clone Ad", "/ads/#{ad.id}/clone", class: 'btn btn-warning btn-xs'  %>
+    <%= link_to "Delete Ad", "/ads/#{ad.id}", class: 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Are you sure?' }%>
+    <% end %>
     <h4><%= link_to ad.title, ad %></h4>
+  </div>  
+  <div class="col-md-6">
+    <strong>Address: </strong><%= ad.address %>, <%= ad.city %>
   </div>
   <div class="col-md-6">
-    <strong>Address:</strong> <%= ad.address %> , <%= ad.city  %>
-  </div>
-  <div class="col-md-6">
-    <strong>Price:</strong> <%= ad.price %>
+    <strong>Price: </strong><%= ad.price %>
   </div>
 </div>
-<div class="col-md-12"> 
+<div class="col-md-12">
   <hr>
 </div>
-
 <% end %>
-

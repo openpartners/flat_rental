@@ -7,24 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
-	<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/ads">
+          FlatRental
+        </a>
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+          <li><%= link_to "Log out", destroy_admin_session_url, :method=>'delete' %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_admin_session_url %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/ads">
-        FlatRental
-      </a>
+    <div class="row">
+      <div class="col-md-12">
+        <%= yield %>
+      </div>
     </div>
   </div>
-</nav>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-		<%= yield %>	
-		</div>
-	</div>
-</div>
-
 </body>
 </html>

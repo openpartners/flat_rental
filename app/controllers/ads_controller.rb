@@ -1,5 +1,6 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy, :clone]
 
   def clone
     @ad = Ad.find(params[:id])
@@ -73,6 +74,6 @@ class AdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:title, :description, :price, :address, :city)
+      params.require(:ad).permit(:title, :description, :price, :address, :city, :image)
     end
   end
