@@ -1,6 +1,10 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
+  def clone
+    @ad = Ad.find(params[:id])
+  end
+
   # GET /ads
   # GET /ads.json
   def index
@@ -71,4 +75,4 @@ class AdsController < ApplicationController
     def ad_params
       params.require(:ad).permit(:title, :description, :price, :address, :city)
     end
-end
+  end
