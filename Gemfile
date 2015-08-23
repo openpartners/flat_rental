@@ -36,6 +36,9 @@ gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'therubyracer', '~> 0.12.2'
 gem 'less-rails', '~> 2.7.0'
 gem 'devise', '~> 3.5.2'
+gem 'ckeditor', '~> 4.1.3'
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.2.10'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
